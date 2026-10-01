@@ -1,9 +1,8 @@
 @font-face {
-	font-family: NAMU;
+	font-family: "NAMU Pro";
 	src:
 		local("NAMU Pro"),
-		local("NAMU"),
-		url("assets/fonts/NAMU.woff2") format("woff2");
+		url("assets/fonts/NAMU-Pro.woff2") format("woff2");
 	font-weight: 400;
 	font-display: swap;
 }
@@ -131,7 +130,7 @@ main {
 h1,
 h2,
 h3 {
-	font-family: NAMU, Fixel, Arial, sans-serif;
+	font-family: "NAMU Pro", Fixel, Arial, sans-serif;
 	font-weight: 400;
 	margin: 0;
 }

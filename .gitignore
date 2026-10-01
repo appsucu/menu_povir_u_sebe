@@ -20,5 +20,9 @@ venv/
 ENV/
 env/
 
+# Source font collections; publish only the selected webfonts from dist/assets/fonts/
+TTF_WEB/
+FixelAll/
+
 # Logs & temp files
 *.log

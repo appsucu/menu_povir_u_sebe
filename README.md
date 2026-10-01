@@ -19,7 +19,7 @@
 ## Технологічний стек
 
 - **Frontend:** Semantic HTML5, Modern CSS (Custom Properties, Grid, Subgrid), Vanilla JavaScript (ES6+)
-- **Типографіка:** NAMU, MacPaw Fixel Text
+- **Типографіка:** NAMU Pro, MacPaw Fixel Text
 - **CI/CD & Hosting:** GitHub Actions, GitHub Pages
 
 ## Структура репозиторію
@@ -32,7 +32,7 @@
 │   ├── menu.json             # Структуровані дані меню
 │   ├── font-licenses.txt     # Ліцензії на використані шрифти
 │   └── assets/               # Графічні ресурси (логотип, фото страв, шрифти)
-│       └── fonts/            # Локальні файли шрифтів (WOFF2)
+│       └── fonts/            # NAMU Pro та Fixel Text у форматі WOFF2
 ├── scripts/                  # Допоміжні скрипти автоматизації
 │   └── download_fonts.py     # Скрипт завантаження та локалізації шрифтів
 └── .github/                  # Конфігурації CI/CD робочих процесів

@@ -1,4 +1,4 @@
-"""Download the three existing web fonts and localize the exported CSS URLs."""
+"""Download Fixel web fonts and localize their CSS URLs."""
 
 from pathlib import Path
 import sys
@@ -8,7 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 FONT_DIR = ROOT / "dist" / "assets" / "fonts"
 CSS_PATH = ROOT / "dist" / "style.css"
 FONTS = {
-    "NAMU.woff2": "https://db.onlinewebfonts.com/t/122548962e9f69bf995caeddeb2e69b0.woff2",
+
     "FixelText-Regular.woff2": "https://cdn.jsdelivr.net/npm/@nonsuch/component-library@0.52.0/fonts/files/FixelText-Regular.woff2",
     "FixelText-SemiBold.woff2": "https://cdn.jsdelivr.net/npm/@nonsuch/component-library@0.52.0/fonts/files/FixelText-SemiBold.woff2",
 }
@@ -41,7 +41,7 @@ def main():
     if failed:
         print("External CSS URLs remain for: " + ", ".join(failed), file=sys.stderr)
         return 1
-    print("All three fonts are local. Restart or refresh your browser.")
+    print("Both Fixel fonts are local. Restart or refresh your browser.")
     return 0
 
 
