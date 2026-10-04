@@ -47,6 +47,13 @@ jobs:
             cp -r site_staging/dist/* site_deploy/staging/
           fi
 
+          # Automatically inject cache-busting version query param (?v=<sha>) into all HTML files
+          if [ -f "site_staging/scripts/inject_cache_busting.py" ]; then
+            python3 site_staging/scripts/inject_cache_busting.py site_deploy "${{ github.sha }}"
+          elif [ -f "site_main/scripts/inject_cache_busting.py" ]; then
+            python3 site_main/scripts/inject_cache_busting.py site_deploy "${{ github.sha }}"
+          fi
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
