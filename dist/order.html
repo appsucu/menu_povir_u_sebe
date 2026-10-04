@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="uk">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<title>Ваше замовлення — Повір у себе</title>
+		<meta name="robots" content="noindex" />
+		<link
+			rel="icon"
+			type="image/svg+xml"
+			href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23ff5000'/%3E%3Cpath d='M8 24V8h16v16h-4V12h-8v12z' fill='%23fff8ef'/%3E%3C/svg%3E"
+		/>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<a class="skip" href="#order">Перейти до замовлення</a>
+		<header>
+			<div class="topbar">
+				<a
+					class="brand"
+					href="index.html"
+					aria-label="Повір у себе — до меню"
+					><img
+						src="assets/logo.png"
+						alt="Повір у себе Space"
+						width="111"
+						height="102" /></a
+				><span class="header-label">КЕЙТЕРИНГ</span
+				><div class="topbar-actions">
+					<a class="btn" href="index.html#menu">← До меню</a>
+					<a class="contact" href="tel:+380977339855"
+						>+38 (097) 733 98 55</a
+					>
+				</div>
+			</div>
+		</header>
+		<main id="order" class="order-page">
+			<h1 tabindex="-1" id="order-title">Ваше замовлення</h1>
+			<p class="order-lead">
+				Перевірте список, кількість і суму перед відправленням.
+			</p>
+
+			<noscript>
+				<p class="order-note">
+					Для складання замовлення потрібен JavaScript. Ви можете
+					написати нам напряму:
+					<a href="https://wa.me/380977339855">WhatsApp</a> або
+					<a href="tel:+380977339855">зателефонувати</a>.
+				</p>
+			</noscript>
+
+			<div id="order-empty" hidden>
+				<p class="order-note">
+					Ви ще нічого не обрали. Додайте страви в меню — вони
+					з'являться тут.
+				</p>
+				<div class="order-actions">
+					<a class="btn btn-primary" href="index.html#menu"
+						>Перейти до меню</a
+					>
+				</div>
+			</div>
+
+			<div id="order-content" hidden>
+				<ul class="order-lines" id="order-lines"></ul>
+				<p class="order-total-row" aria-live="polite" aria-atomic="true">
+					<span id="order-count"></span>
+					<strong id="order-total"></strong>
+				</p>
+
+				<section class="order-details" aria-labelledby="details-title">
+					<h2 id="details-title">Деталі події</h2>
+					<label>
+						<span>Дата події</span>
+						<input type="date" id="detail-date" />
+					</label>
+					<label>
+						<span>Кількість гостей</span>
+						<input
+							type="number"
+							id="detail-guests"
+							min="1"
+							inputmode="numeric"
+						/>
+					</label>
+					<label>
+						<span>Коментар (необов'язково)</span>
+						<textarea id="detail-comment" rows="3"></textarea>
+					</label>
+				</section>
+
+				<section class="order-preview" aria-labelledby="preview-title">
+					<h2 id="preview-title">Текст повідомлення</h2>
+					<p class="order-hint">
+						Саме це повідомлення відкриється у WhatsApp. Там його
+						можна ще відредагувати.
+					</p>
+					<textarea
+						id="message-preview"
+						readonly
+						rows="12"
+						aria-labelledby="preview-title"
+					></textarea>
+				</section>
+
+				<div class="order-actions">
+					<a
+						class="btn btn-primary"
+						id="order-send"
+						href="#"
+						target="_blank"
+						rel="noopener"
+						>Відправити у WhatsApp</a
+					>
+					<a class="btn" href="index.html#menu">Додати ще страви</a>
+					<button type="button" class="btn-link" id="order-clear">
+						Очистити замовлення
+					</button>
+				</div>
+			</div>
+		</main>
+		<footer>
+			<div class="footer-inner">
+				<div>
+					<p class="eyebrow">ПОВІР У СЕБЕ</p>
+					<h2>Обговорімо<br />вашу подію</h2>
+				</div>
+				<div class="footer-contact">
+					<a href="mailto:daryna.kolmyk@povirusebe.org"
+						>daryna.kolmyk@povirusebe.org</a
+					>
+					<a href="tel:+380977339855">+38 (097) 733 98 55</a>
+					<p>Київ, вул. Почайнинська 38/44</p>
+				</div>
+			</div>
+		</footer>
+		<script src="order-core.js" defer></script>
+		<script src="order.js" defer></script>
+	</body>
+</html>
