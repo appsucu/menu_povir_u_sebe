@@ -70,23 +70,56 @@
 
 				<section class="order-details" aria-labelledby="details-title">
 					<h2 id="details-title">Деталі події</h2>
-					<label>
-						<span>Дата події</span>
-						<input type="date" id="detail-date" />
-					</label>
-					<label>
-						<span>Кількість гостей</span>
-						<input
-							type="number"
-							id="detail-guests"
-							min="1"
-							inputmode="numeric"
-						/>
-					</label>
-					<label>
-						<span>Коментар (необов'язково)</span>
-						<textarea id="detail-comment" rows="3"></textarea>
-					</label>
+					<div class="details-grid">
+						<label>
+							<span>Назва події</span>
+							<input
+								type="text"
+								id="detail-event"
+								placeholder="наприклад, Презентація або День народження"
+							/>
+						</label>
+						<label>
+							<span>Організатор / Компанія</span>
+							<input
+								type="text"
+								id="detail-organizer"
+								placeholder="назва компанії або приватна особа"
+							/>
+						</label>
+						<label>
+							<span>Контактна особа</span>
+							<input
+								type="text"
+								id="detail-contact"
+								placeholder="Ім'я та прізвище"
+							/>
+						</label>
+						<div class="details-row-2">
+							<label>
+								<span>Дата події</span>
+								<input type="date" id="detail-date" />
+							</label>
+							<label>
+								<span>Кількість гостей</span>
+								<input
+									type="number"
+									id="detail-guests"
+									min="1"
+									placeholder="орієнтовно"
+									inputmode="numeric"
+								/>
+							</label>
+						</div>
+						<label>
+							<span>Коментар (необов'язково)</span>
+							<textarea
+								id="detail-comment"
+								rows="3"
+								placeholder="побажання щодо часу, подачі, локації тощо"
+							></textarea>
+						</label>
+					</div>
 				</section>
 
 				<section class="order-preview" aria-labelledby="preview-title">

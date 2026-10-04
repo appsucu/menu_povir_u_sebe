@@ -58,16 +58,33 @@ function buildMessage(order, details) {
   const intro = 'Вітаю! Хочу замовити кейтеринг.';
   const labels = Object.keys(order);
   const d = details || {};
-  const extra = ['Дата події: ' + (d.date || ''), 'Кількість гостей: ' + (d.guests || '')];
-  if (d.comment) extra.push('Коментар: ' + d.comment);
-  if (!labels.length) return [intro, ''].concat(extra).join('\n');
-  const rows = labels.map((label, i) => {
-    const item = order[label];
-    return (i + 1) + '. ' + item.desc + ' — ' + item.qty + ' × ' + formatUAH(item.price, ' ') +
-      ' грн = ' + formatUAH(item.qty * item.price, ' ') + ' грн';
-  });
-  return [intro, '', 'Замовлення:'].concat(rows,
-    ['', 'Разом: ' + formatUAH(orderTotal(order), ' ') + ' грн', ''], extra).join('\n');
+
+  const infoLines = [];
+  if (d.event) infoLines.push('Подія: ' + d.event);
+  if (d.organizer) infoLines.push('Організатор: ' + d.organizer);
+  if (d.contact) infoLines.push('Контактна особа: ' + d.contact);
+  if (d.date) infoLines.push('Дата події: ' + d.date);
+  if (d.guests) infoLines.push('Кількість гостей: ' + d.guests);
+
+  const lines = [intro];
+  if (infoLines.length) {
+    lines.push('', ...infoLines);
+  }
+
+  if (labels.length) {
+    const rows = labels.map((label, i) => {
+      const item = order[label];
+      return (i + 1) + '. ' + item.desc + ' — ' + item.qty + ' × ' + formatUAH(item.price, ' ') +
+        ' грн = ' + formatUAH(item.qty * item.price, ' ') + ' грн';
+    });
+    lines.push('', 'Замовлення:', ...rows, '', 'Разом: ' + formatUAH(orderTotal(order), ' ') + ' грн');
+  }
+
+  if (d.comment) {
+    lines.push('', 'Коментар: ' + d.comment);
+  }
+
+  return lines.join('\n');
 }
 
 function whatsappUrl(message) {
@@ -75,7 +92,8 @@ function whatsappUrl(message) {
 }
 
 let order = readOrder();
-const details = Object.assign({date: '', guests: '', comment: ''}, readJSON(DETAILS_KEY));
+const defaultDetails = {event: '', organizer: '', contact: '', date: '', guests: '', comment: ''};
+const details = Object.assign(defaultDetails, readJSON(DETAILS_KEY));
 
 const $ = id => document.getElementById(id);
 const emptyBox = $('order-empty');
@@ -85,6 +103,9 @@ const countEl = $('order-count');
 const totalEl = $('order-total');
 const preview = $('message-preview');
 const sendLink = $('order-send');
+const eventInput = $('detail-event');
+const organizerInput = $('detail-organizer');
+const contactInput = $('detail-contact');
 const dateInput = $('detail-date');
 const guestsInput = $('detail-guests');
 const commentInput = $('detail-comment');
@@ -97,11 +118,14 @@ function plural(n) {
 }
 
 function messageDetails() {
-  const [y, m, d] = details.date.split('-');
+  const [y, m, d] = (details.date || '').split('-');
   return {
-    date: y && m && d ? d + '.' + m + '.' + y : '',
-    guests: details.guests,
-    comment: details.comment.trim()
+    event: (details.event || '').trim(),
+    organizer: (details.organizer || '').trim(),
+    contact: (details.contact || '').trim(),
+    date: y && m && d ? d + '.' + m + '.' + y : (details.date || '').trim(),
+    guests: (details.guests || '').trim(),
+    comment: (details.comment || '').trim()
   };
 }
 
@@ -191,17 +215,24 @@ function buildRow(label) {
 
 Object.keys(order).forEach(label => list.appendChild(buildRow(label)));
 
-dateInput.value = details.date;
-guestsInput.value = details.guests;
-commentInput.value = details.comment;
+eventInput.value = details.event || '';
+organizerInput.value = details.organizer || '';
+contactInput.value = details.contact || '';
+dateInput.value = details.date || '';
+guestsInput.value = details.guests || '';
+commentInput.value = details.comment || '';
+
 function saveDetails() {
+  details.event = eventInput.value;
+  details.organizer = organizerInput.value;
+  details.contact = contactInput.value;
   details.date = dateInput.value;
   details.guests = guestsInput.value;
   details.comment = commentInput.value;
   writeJSON(DETAILS_KEY, details);
   refresh();
 }
-[dateInput, guestsInput, commentInput].forEach(el => el.addEventListener('input', saveDetails));
+[eventInput, organizerInput, contactInput, dateInput, guestsInput, commentInput].forEach(el => el.addEventListener('input', saveDetails));
 
 $('order-clear').addEventListener('click', () => {
   Object.keys(order).forEach(label => { rows[label].li.remove(); delete rows[label]; delete order[label]; });
