@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - staging
   workflow_dispatch:
 
 permissions:
@@ -22,8 +23,29 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout main (Production)
         uses: actions/checkout@v4
+        with:
+          ref: main
+          path: site_main
+
+      - name: Checkout staging (Preview)
+        uses: actions/checkout@v4
+        continue-on-error: true
+        with:
+          ref: staging
+          path: site_staging
+
+      - name: Prepare site structure
+        run: |
+          mkdir -p site_deploy
+          if [ -d "site_main/dist" ]; then
+            cp -r site_main/dist/* site_deploy/
+          fi
+          if [ -d "site_staging/dist" ]; then
+            mkdir -p site_deploy/staging
+            cp -r site_staging/dist/* site_deploy/staging/
+          fi
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -31,7 +53,7 @@ jobs:
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: site_deploy
 
       - name: Deploy to GitHub Pages
         id: deployment
