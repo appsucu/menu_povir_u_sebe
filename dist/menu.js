@@ -17,8 +17,47 @@ if ('IntersectionObserver' in window) {
 }
 navigationLinks.forEach(link => link.addEventListener('click', () => activateCategory(link.hash.slice(1))));
 
-/* Order builder: quantity per dish. Prices and names are read from the rendered DOM;
-   shared storage/message helpers live in order-core.js. The order is reviewed and sent from order.html. */
+/* Order builder: quantity per dish. Self-contained with localStorage persistence. */
+const KEY = 'povirusebe:order';
+const MAX_QTY = 999;
+
+function readOrder() {
+  try {
+    const raw = JSON.parse(localStorage.getItem(KEY) || 'null');
+    if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return {};
+    const order = {};
+    for (const label of Object.keys(raw)) {
+      const item = raw[label];
+      const qty = item && Number(item.qty);
+      const price = item && Number(item.price);
+      if (Number.isInteger(qty) && qty > 0 && Number.isFinite(price) && price >= 0) {
+        order[label] = {qty: Math.min(qty, MAX_QTY), price, desc: String(item.desc || label)};
+      }
+    }
+    return order;
+  } catch (e) {
+    return {};
+  }
+}
+
+function writeOrder(order) {
+  try {
+    const data = {};
+    for (const label of Object.keys(order)) {
+      if (order[label].qty > 0) data[label] = order[label];
+    }
+    localStorage.setItem(KEY, JSON.stringify(data));
+  } catch (e) {}
+}
+
+function clampQty(value) {
+  return Number.isFinite(value) ? Math.max(0, Math.min(MAX_QTY, Math.floor(value))) : 0;
+}
+
+function formatUAH(value, separator) {
+  return String(value).replace(/\B(?=(\d{3})+(?!\d))/g, separator || '\u00a0');
+}
+
 function parsePrice(text) {
   const match = text.replace(/\u00a0/g, '').match(/\d[\d\s]*/);
   return match ? parseInt(match[0].replace(/\s/g, ''), 10) : NaN;
