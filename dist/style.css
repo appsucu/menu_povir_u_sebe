@@ -155,10 +155,8 @@ main {
 	font-weight: 600;
 }
 .dot {
-	width: 7px;
-	height: 7px;
-	border-radius: 50%;
-	background: var(--orange);
+	width: 16px;
+	height: 16px;
 	display: inline-block;
 	flex-shrink: 0;
 }
@@ -762,7 +760,7 @@ footer h2 {
 		font-size: clamp(4.5rem, 24vw, 7rem);
 	}
 	.eyebrow {
-		font-size: 0.7rem;
+		font-size: 0.68rem;
 	}
 	.intro-note {
 		max-width: none;
