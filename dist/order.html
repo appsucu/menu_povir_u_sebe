@@ -10,7 +10,9 @@
 			type="image/svg+xml"
 			href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23ff5000'/%3E%3Cpath d='M8 24V8h16v16h-4V12h-8v12z' fill='%23fff8ef'/%3E%3C/svg%3E"
 		/>
-		<link rel="stylesheet" href="style.css" />
+		<link rel="preload" href="assets/fonts/FixelText-Regular.woff2" as="font" type="font/woff2" crossorigin />
+		<link rel="preload" href="assets/fonts/NAMU-Pro.woff2" as="font" type="font/woff2" crossorigin />
+		<link rel="stylesheet" href="style.css?v=4" />
 	</head>
 	<body>
 		<a class="skip" href="#order">Перейти до замовлення</a>
@@ -21,17 +23,14 @@
 					href="index.html"
 					aria-label="Повір у себе — до меню"
 					><img
-						src="assets/logo.png"
+						src="assets/logospace.svg"
 						alt="Повір у себе Space"
 						width="111"
-						height="102" /></a
-				><span class="header-label">КЕЙТЕРИНГ</span
-				><div class="topbar-actions">
-					<a class="btn" href="index.html#menu">← До меню</a>
-					<a class="contact" href="tel:+380977339855"
-						>+38 (097) 733 98 55</a
-					>
-				</div>
+						height="111" /></a
+				>
+				<p class="topbar-address">Київ, Поділ · Почайнинська 38/44</p>
+				<a class="cta" href="index.html#menu"
+					><span class="cta-long">← До меню</span><span class="cta-short">← Меню</span></a>
 			</div>
 		</header>
 		<main id="order" class="order-page">
@@ -156,14 +155,14 @@
 			<div class="footer-inner">
 				<div>
 					<p class="eyebrow">ПОВІР У СЕБЕ</p>
-					<h2>Обговорімо<br />вашу подію</h2>
+					<h2>Ви плануєте<br />зустріч.<br /><span>Ми — її смак.</span></h2>
 				</div>
 				<div class="footer-contact">
+					<p class="footer-note">Для події, команди чи важливої розмови.<br />Напишіть нам — обговоримо меню та кількість гостей.</p>
 					<a href="mailto:daryna.kolmyk@povirusebe.org"
-						>daryna.kolmyk@povirusebe.org</a
-					>
-					<a href="tel:+380977339855">+38 (097) 733 98 55</a>
-					<p>Київ, вул. Почайнинська 38/44</p>
+						>daryna.kolmyk@povirusebe.org<svg class="arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 18 18 6M8 6h10v10" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square" stroke-linejoin="miter"/></svg></a
+					><a class="footer-phone" href="tel:+380977339855">+38 (097) 733 98 55</a>
+					<p class="footer-address">Київ, вул. Почайнинська 38/44</p>
 				</div>
 			</div>
 		</footer>
