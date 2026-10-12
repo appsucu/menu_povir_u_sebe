@@ -149,7 +149,7 @@ function applySearch(rawQuery) {
       dish.h3.innerHTML = html;
     }
   } else {
-    for (const dish of dishes) dish.h3.textContent = dish.title;
+    for (const dish of dishes) if (dish.h3.childElementCount) dish.h3.textContent = dish.title;
   }
   searchStatus.textContent = query === '' ? '' : (count ? 'Знайдено ' + count + ' ' + pluralDishes(count) : 'Нічого не знайдено');
   searchEmpty.hidden = !(query !== '' && count === 0);
@@ -159,9 +159,14 @@ function applySearch(rawQuery) {
   history.replaceState(null, '', query ? '?q=' + encodeURIComponent(query) : location.pathname);
 }
 
-searchInput.addEventListener('input', () => applySearch(searchInput.value));
+let searchFrame = 0;
+searchInput.addEventListener('input', () => {
+  cancelAnimationFrame(searchFrame);
+  searchFrame = requestAnimationFrame(() => applySearch(searchInput.value));
+});
 searchForm.addEventListener('submit', e => e.preventDefault());
 function clearSearch(focus = true) {
+  cancelAnimationFrame(searchFrame);
   searchInput.value = '';
   applySearch('');
   if (focus) searchInput.focus();
