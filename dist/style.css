@@ -319,7 +319,7 @@ nav a[aria-current="true"] sup {
 }
 .search {
 	position: relative;
-	flex: 0 0 260px;
+	flex: 0 0 300px;
 	margin: 0;
 }
 .search input {
