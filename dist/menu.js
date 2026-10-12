@@ -302,7 +302,8 @@ function render() {
     dish.minus.disabled = dish.qty === 0;
     dish.plus.disabled = dish.qty >= MAX_QTY;
     dish.card.classList.toggle('in-order', dish.qty > 0);
-    dish.flag.hidden = dish.qty === 0;
+    dish.flag.querySelector('.in-order-qty').textContent = dish.qty;
+    dish.flag.classList.toggle('is-on', dish.qty > 0);
   }
 }
 
@@ -345,9 +346,12 @@ dishes.forEach(dish => {
 
   dish.flag = document.createElement('span');
   dish.flag.className = 'in-order-flag';
-  dish.flag.textContent = 'У замовленні';
-  dish.flag.hidden = true;
-  dish.card.appendChild(dish.flag);
+  dish.flag.setAttribute('aria-hidden', 'true');
+  dish.flag.innerHTML =
+    '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
+    '<span class="in-order-qty">0</span>';
+  const photo = dish.card.querySelector('.photo');
+  (photo || dish.card).appendChild(dish.flag);
 });
 
 bar.querySelector('.order-clear').addEventListener('click', () => {
