@@ -192,7 +192,7 @@ h1 {
 	line-height: 1.55;
 }
 .pdf-link {
-	margin-top: auto;
+	margin-top: 14px;
 	align-self: flex-start;
 	display: inline-flex;
 	align-items: center;
@@ -324,8 +324,8 @@ nav a[aria-current="true"] sup {
 }
 .search {
 	position: relative;
-	flex: 0 0 300px;
-	margin: 0;
+	flex: 0 0 313px;
+	margin: 0 0 0 -13px;
 }
 .search input {
 	width: 100%;
