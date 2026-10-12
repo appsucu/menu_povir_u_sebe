@@ -141,7 +141,7 @@ main {
 .intro {
 	display: grid;
 	grid-template-columns: minmax(0, 1fr) 300px;
-	align-items: start;
+	align-items: stretch;
 	padding: 48px 0 40px;
 	gap: 30px;
 }
@@ -181,16 +181,19 @@ h1 {
 	letter-spacing: -0.01em;
 }
 .intro-note {
-	padding-bottom: 8px;
+	display: flex;
+	flex-direction: column;
 	max-width: 300px;
 }
 .intro-note p {
-	margin: 0 0 14px;
+	margin: 0;
 	font-size: 0.95rem;
 	color: var(--muted);
 	line-height: 1.55;
 }
 .pdf-link {
+	margin-top: auto;
+	align-self: flex-start;
 	display: inline-flex;
 	align-items: center;
 	gap: 8px;
