@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://appsucu.github.io/menu_povir_u_sebe/sitemap.xml
