@@ -7,8 +7,10 @@ function activateCategory(id) {
     if (link.hash === '#' + id) {
       link.setAttribute('aria-current', 'true');
       const nav = link.parentElement;
-      if (link.offsetLeft < nav.scrollLeft || link.offsetLeft + link.offsetWidth > nav.scrollLeft + nav.clientWidth)
-        link.scrollIntoView({block: 'nearest', inline: 'nearest'});
+      const navRect = nav.getBoundingClientRect();
+      const linkRect = link.getBoundingClientRect();
+      if (linkRect.left < navRect.left || linkRect.right > navRect.right)
+        nav.scrollBy({left: linkRect.left < navRect.left ? linkRect.left - navRect.left : linkRect.right - navRect.right, behavior: 'smooth'});
     } else link.removeAttribute('aria-current');
   }
 }
