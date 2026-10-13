@@ -735,6 +735,7 @@ footer h2 {
 		display: none;
 	}
 	.cta {
+		margin-left: auto;
 		padding: 10px 14px;
 		min-height: 44px;
 		font-size: 0.85rem;
