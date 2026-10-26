@@ -1,4 +1,4 @@
-/* One warm surface system, with transparency only for the sticky navigation. */
+/* Keep the menu on one canvas; spacing and type separate its sections. */
 :root { --gutter: clamp(16px, 4.2vw, 60px); }
 h1, h2, h3 { text-wrap: balance; }
 p, details p { text-wrap: pretty; }
@@ -9,42 +9,14 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
 	outline-offset: 3px;
 }
 .intro-note p { max-width: 30ch; }
-.intro {
-	margin: 24px 0;
-	padding: 32px;
-	background: #f3eadd;
-	border-radius: 8px;
-}
-.intro-note { justify-content: space-between; }
-.intro-note p { color: var(--ink); }
 .toolbar {
-	top: 8px;
-	padding: 8px 12px;
-	margin-bottom: 24px;
-	background: rgba(255, 253, 250, .88);
-	border: 1px solid var(--line);
-	border-radius: 8px;
+	background: rgba(255, 248, 239, .92);
+	border: 0;
 	backdrop-filter: blur(8px);
 	-webkit-backdrop-filter: blur(8px);
 }
-.search { margin-left: 0; }
-.search input { background: var(--paper); border-color: var(--line); }
-.menu-sections > section {
-	padding: 24px;
-	margin-bottom: 16px;
-	background: var(--white);
-	border-radius: 8px;
-}
-.section-heading {
-	align-items: end;
-	padding-bottom: 16px;
-	border-bottom: 1px solid var(--line);
-	margin-bottom: 24px;
-}
-.dish { border-bottom-color: var(--line); }
-.photo { border-radius: 4px; }
-.qty { border-radius: 4px; }
-.order-page { background: var(--white); }
+.dish, details { border: 0; }
+.without-photo { background: transparent; padding: 16px 0 12px; border-radius: 0; }
 .pdf-link { font-size: 14px; }
 .search input::placeholder { color: var(--muted); }
 .dish > h3 { text-wrap: balance; }
@@ -60,11 +32,10 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
 }
 
 @media (max-width: 700px) {
-	.intro { margin: 16px 0; padding: 24px 16px; }
+	.intro { padding: 32px 0; }
 	.intro h1 { font-size: clamp(72px, 23vw, 112px); }
 	.intro-note p { max-width: 50ch; }
-	.toolbar { top: 4px; padding: 8px; margin-bottom: 16px; }
-	.menu-sections > section { padding: 24px 16px 8px; margin-bottom: 12px; }
+	.toolbar { margin-bottom: 24px; }
 	.section-heading { margin-bottom: 16px; }
 	.section-heading h2 { font-size: 30px; line-height: 36px; }
 	.dishes, .drinks { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0; }
@@ -75,7 +46,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
 		column-gap: 16px;
 		padding: 16px 0;
 		margin: 0;
-		border-bottom: 1px solid var(--line);
+		border: 0;
 	}
 	.dish > .photo, .dish > .dish-figure { grid-column: 1; grid-row: 1 / 5; aspect-ratio: 1; align-self: start; }
 	.dish > .portion { grid-column: 2; grid-row: 1; padding: 0; margin: 0 0 4px; font-size: 12px; line-height: 16px; }
