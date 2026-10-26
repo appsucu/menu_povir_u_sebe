@@ -207,9 +207,24 @@ if ('ResizeObserver' in window) new ResizeObserver(updateStickyOffset).observe(t
 
 document.querySelector('.pdf-link').addEventListener('click', () => window.print());
 
+const taglineWords = document.querySelectorAll('.tagline-reveal span');
+if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const wordObserver = new IntersectionObserver(entries => {
+    for (const entry of entries) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        wordObserver.unobserve(entry.target);
+      }
+    }
+  }, {rootMargin: '0px 0px -25% 0px'});
+  taglineWords.forEach(word => wordObserver.observe(word));
+} else {
+  taglineWords.forEach(word => word.classList.add('is-visible'));
+}
+
 (function () {
 /* Order builder: quantity per dish. Self-contained with localStorage persistence. */
-const KEY = 'povirusebe:order';
+const KEY = 'povirusebe:order:feat';
 const MAX_QTY = 999;
 
 function readOrder() {

@@ -1,7 +1,7 @@
 'use strict';
 /* Order review page. Self-contained logic and message builder. */
-const KEY = 'povirusebe:order';
-const DETAILS_KEY = 'povirusebe:order-details';
+const KEY = 'povirusebe:order:feat';
+const DETAILS_KEY = 'povirusebe:order-details:feat';
 const WA_PHONE = '380977339855';
 const MAX_QTY = 999;
 
