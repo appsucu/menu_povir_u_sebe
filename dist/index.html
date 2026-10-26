@@ -17,15 +17,16 @@
 	<meta property="og:description"
 		content="Меню кейтерингу простору «Повір у себе» на Подолі в Києві: тарти, міні-галети, паї, фокача, салати, десерти й напої. Склад, порції та ціни." />
 	<meta property="og:url" content="https://appsucu.github.io/menu_povir_u_sebe/feat/" />
-	<meta property="og:image" content="https://appsucu.github.io/menu_povir_u_sebe/feat/assets/dish-20.webp" />
-	<meta property="og:image:width" content="640" />
-	<meta property="og:image:height" content="640" />
-	<meta property="og:image:alt" content="Байтси з лимонним курдом" />
-	<meta name="twitter:card" content="summary_large_image" />
+	<meta property="og:image" content="https://appsucu.github.io/menu_povir_u_sebe/assets/logo.png" />
+	<meta property="og:image:width" content="370" />
+	<meta property="og:image:height" content="340" />
+	<meta property="og:image:alt" content="Повір у себе — логотип" />
+	<meta name="twitter:card" content="summary" />
 	<link rel="icon" type="image/svg+xml"
 		href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23ff5000'/%3E%3Cpath d='M8 24V8h16v16h-4V12h-8v12z' fill='%23fff8ef'/%3E%3C/svg%3E" />
-	<link rel="preload" href="assets/fonts/Manrope-cyrillic.woff2" as="font" type="font/woff2" crossorigin />
-	<link rel="preload" href="assets/fonts/Manrope-latin.woff2" as="font" type="font/woff2" crossorigin />
+	<link rel="preload" href="assets/fonts/FixelText-Regular.woff2" as="font" type="font/woff2" crossorigin />
+	<link rel="preload" href="assets/fonts/FixelText-SemiBold.woff2" as="font" type="font/woff2" crossorigin />
+	<link rel="preload" href="assets/fonts/NAMU-Pro.woff2" as="font" type="font/woff2" crossorigin />
 	<link rel="stylesheet" href="style.css?v=6" />
 	<link rel="stylesheet" href="feat.css" />
 	<script type="application/ld+json">
@@ -51,24 +52,26 @@
 	<main id="top">
 		<div class="intro">
 			<div class="intro-main">
-				<p class="eyebrow">Повір у себе · кейтеринг у Києві</p>
-				<h1>Смак, що<br />збирає <span>разом.</span></h1>
-				<p class="tagline">Оберіть страви для зустрічі, свята чи події. Ми приготуємо, а ви приділите час людям.</p>
-				<div class="intro-actions">
-					<a class="cta" href="#menu">Переглянути меню <span aria-hidden="true">↗</span></a>
-					<button type="button" class="pdf-link">Роздрукувати меню <span aria-hidden="true">↗</span></button>
-				</div>
-				<p class="hero-proof">37 позицій · ціни та склад на сторінці · замовлення через WhatsApp</p>
+				<p class="eyebrow">
+					<svg class="dot" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+						<path
+							d="M23.4327 11.1508V12.2978C20.4753 12.2978 17.6391 13.4726 15.5479 15.5638C13.4567 17.655 12.2819 20.4913 12.2819 23.4486H11.1508C11.1508 20.4913 9.97603 17.655 7.88484 15.5638C5.79365 13.4726 2.95739 12.2978 0 12.2978V11.1508C2.95739 11.1508 5.79365 9.97603 7.88484 7.88484C9.97603 5.79365 11.1508 2.95739 11.1508 0H12.2819C12.2819 2.95739 13.4567 5.79365 15.5479 7.88484C17.6391 9.97603 20.4753 11.1508 23.4327 11.1508Z"
+							fill="#FB5000" />
+					</svg>ПОВІР У СЕБЕ
+					COFFEE ( КЕЙТЕРИНГ )
+				</p>
+				<h1>меню<svg class="arrow arrow-hero" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+						<path d="M8 6h10v10M6 18 17.4 6.6" fill="none" stroke="currentColor" stroke-width="2.6"
+							stroke-linecap="square" stroke-linejoin="miter" />
+					</svg></h1>
+				<p class="tagline">До ваших особливих зустрічей</p>
 			</div>
-			<figure class="hero-photo">
-				<img src="assets/dish-20.webp" alt="Байтси з лимонним курдом для кейтерингу" width="640" height="640" fetchpriority="high" />
-				<figcaption><span>З нашого меню</span><strong>Байтси з лимонним курдом</strong></figcaption>
-			</figure>
-		</div>
-		<div class="how-it-works" aria-label="Як замовити кейтеринг">
-			<p><span>01</span><strong>Оберіть страви</strong><small>Додайте потрібну кількість у меню.</small></p>
-			<p><span>02</span><strong>Перевірте замовлення</strong><small>Перегляньте страви, кількість і суму.</small></p>
-			<p><span>03</span><strong>Надішліть нам</strong><small>Готове повідомлення відкриється у WhatsApp.</small></p>
+			<div class="intro-note">
+				<p>
+					Для зустрічей, свят і подій. <br />Оберіть страви та кількість, <br />а деталі обговоримо у WhatsApp.
+				</p>
+				<button type="button" class="pdf-link">Роздрукувати меню</button>
+			</div>
 		</div>
 		<div class="menu-layout" id="menu">
 			<div class="toolbar" id="toolbar">
@@ -425,10 +428,6 @@
 							</details>
 						</article>
 					</div>
-				</section>
-				<section class="tagline-section" aria-label="Наш підхід до кейтерингу">
-					<p class="eyebrow">Для ваших людей</p>
-					<p class="tagline-reveal"><span>Добрі</span> <span>зустрічі</span> <span>починаються</span> <span>за</span> <span>спільним</span> <span>столом.</span><br /><span>Ми</span> <span>подбаємо</span> <span>про</span> <span>смак.</span></p>
 				</section>
 				<section id="category-3" aria-labelledby="heading-3">
 					<div class="section-heading">
