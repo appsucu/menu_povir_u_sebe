@@ -36,6 +36,12 @@ jobs:
           ref: staging
           path: site_staging
 
+      - name: Checkout feat (Design preview)
+        uses: actions/checkout@v4
+        with:
+          ref: feat
+          path: site_feat
+
       - name: Prepare site structure
         run: |
           mkdir -p site_deploy
@@ -45,6 +51,11 @@ jobs:
           if [ -d "site_staging/dist" ]; then
             mkdir -p site_deploy/staging
             cp -r site_staging/dist/* site_deploy/staging/
+          fi
+
+          if [ -d "site_feat/dist" ]; then
+            mkdir -p site_deploy/feat
+            cp -r site_feat/dist/* site_deploy/feat/
           fi
 
           # Automatically inject cache-busting version query param (?v=<sha>) into all HTML files
